@@ -1,0 +1,68 @@
+{
+  "common": {
+    "home": "Ana Sayfa",
+    "products": "Ürünler",
+    "cart": "Sepet",
+    "search": "Ara...",
+    "addToCart": "Sepete Ekle",
+    "price": "Fiyat",
+    "category": "Kategori",
+    "rating": "Değerlendirme",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "tryAgain": "Tekrar Dene",
+    "addedToCart": "Sepete eklendi!",
+    "addMore": "Daha Fazla Ekle",
+    "inCart": "Sepette",
+    "continueShopping": "Alışverişe Devam Et"
+
+  },
+  "home": {
+    "title": "Mağazamıza Hoş Geldiniz",
+    "subtitle": "Harika fiyatlarla muhteşem ürünleri keşfedin",
+    "featuredProducts": "Öne Çıkan Ürünler",
+    "shopNow": "Alışverişe Başla",
+    "viewAll": "Tüm Ürünleri Görüntüle"
+  },
+  "products": {
+    "title": "Tüm Ürünler",
+    "filters": "Filtreler",
+    "sortBy": "Sırala",
+    "priceRange": "Fiyat Aralığı",
+    "allCategories": "Tüm Kategoriler",
+    "sortOptions": {
+      "default": "Varsayılan",
+      "priceAsc": "Fiyat: Düşükten Yükseğe",
+      "priceDesc": "Fiyat: Yüksekten Düşüğe",
+      "rating": "En Yüksek Puanlı"
+    },
+    "noProducts": "Ürün bulunamadı",
+    "showingResults": "{count} ürün gösteriliyor"
+  },
+  "product": {
+    "description": "Açıklama",
+    "addedToCart": "Sepete eklendi!",
+    "outOfStock": "Stokta Yok"
+  },
+  "cart": {
+    "title": "Alışveriş Sepeti",
+    "empty": "Sepetiniz boş",
+    "continueShopping": "Alışverişe Devam Et",
+    "quantity": "Adet",
+    "total": "Toplam",
+    "subtotal": "Ara Toplam",
+    "remove": "Kaldır",
+    "checkout": "Ödemeye Git",
+    "itemsInCart": "Sepette {count} ürün",
+    "clearAll": "Sepeti Temizle "
+  },
+  "footer": {
+    "aboutUs": "Hakkımızda",
+    "contactUs": "İletişim",
+    "privacyPolicy": "Gizlilik Politikası",
+    "termsOfService": "Kullanım Şartları",
+    "followUs": "Bizi Takip Edin",
+    "newsletter": "Bültenimize abone olun",
+    "allRightsReserved": "Tüm hakları saklıdır"
+  }
+}

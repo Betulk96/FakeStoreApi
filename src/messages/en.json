@@ -1,0 +1,67 @@
+{
+  "common": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "search": "Search...",
+    "addToCart": "Add to Cart",
+    "price": "Price",
+    "category": "Category",
+    "rating": "Rating",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "tryAgain": "Try Again",
+    "addedToCart": "Added to cart!",
+    "addMore": "Add More",
+    "inCart": "In Cart",
+    "continueShopping": "Continue Shopping",
+    "clearAll": "Clear All"
+  },
+  "home": {
+    "title": "Welcome to Our Store",
+    "subtitle": "Discover amazing products at great prices",
+    "featuredProducts": "Featured Products",
+    "shopNow": "Shop Now",
+    "viewAll": "View All Products"
+  },
+  "products": {
+    "title": "All Products",
+    "filters": "Filters",
+    "sortBy": "Sort By",
+    "priceRange": "Price Range",
+    "allCategories": "All Categories",
+    "sortOptions": {
+      "default": "Default",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low",
+      "rating": "Highest Rated"
+    },
+    "noProducts": "No products found",
+    "showingResults": "Showing {count} products"
+  },
+  "product": {
+    "description": "Description",
+    "addedToCart": "Added to cart!",
+    "outOfStock": "Out of Stock"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "quantity": "Quantity",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "remove": "Remove",
+    "checkout": "Proceed to Checkout",
+    "itemsInCart": "{count} items in cart"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "followUs": "Follow Us",
+    "newsletter": "Subscribe to our newsletter",
+    "allRightsReserved": "All rights reserved"
+  }
+}
