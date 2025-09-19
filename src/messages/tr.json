@@ -14,8 +14,9 @@
     "addedToCart": "Sepete eklendi!",
     "addMore": "Daha Fazla Ekle",
     "inCart": "Sepette",
-    "continueShopping": "Alışverişe Devam Et"
-
+    "continueShopping": "Alışverişe Devam Et",
+    "items": "Ürünler",
+    "clearAll": "Sepeti Temizle"
   },
   "home": {
     "title": "Mağazamıza Hoş Geldiniz",
@@ -25,19 +26,69 @@
     "viewAll": "Tüm Ürünleri Görüntüle"
   },
   "products": {
-    "title": "Tüm Ürünler",
-    "filters": "Filtreler",
-    "sortBy": "Sırala",
-    "priceRange": "Fiyat Aralığı",
-    "allCategories": "Tüm Kategoriler",
-    "sortOptions": {
-      "default": "Varsayılan",
-      "priceAsc": "Fiyat: Düşükten Yükseğe",
-      "priceDesc": "Fiyat: Yüksekten Düşüğe",
-      "rating": "En Yüksek Puanlı"
+    "title": "Popüler Ürünler",
+    "loading": "Ürünler yükleniyor...",
+    "noProducts": "Ürün bulunamadı.",
+    "methods": {
+      "rating": "En Yüksek Puanlı",
+      "reviews": "En Çok Değerlendirilen",
+      "trending": "Trend Ürünler",
+      "featured": "Öne Çıkan"
     },
-    "noProducts": "Ürün bulunamadı",
-    "showingResults": "{count} ürün gösteriliyor"
+    "descriptions": {
+      "rating": "En yüksek puana sahip productlar",
+      "reviews": "En çok değerlendirme alan ürünler",
+      "trending": "Puan ve değerlendirme sayısına göre trend ürünler",
+      "featured": "Öne çıkarılan ürünler"
+    },
+    "errors": {
+      "fetchFailed": "Popüler ürünler alınamadı:"
+    },
+    "statistics": {
+      "title": "İstatistikler",
+      "averageRating": "Ortalama Puan",
+      "totalReviews": "Toplam Değerlendirme",
+      "averagePrice": "Ortalama Fiyat",
+      "categoryCount": "Kategori Sayısı"
+    },
+    "buttons": {
+      "showAll": "Tüm Ürünleri Gör",
+      "showPopular": "Popüler Ürünleri Gör",
+      "loadMore": "Daha Fazla Yükle",
+      "refresh": "Yenile"
+    },
+    "categories": {
+      "all": "Tüm Kategoriler",
+      "electronics": "Elektronik",
+      "jewelery": "Mücevher",
+      "men's clothing": "Erkek Giyim",
+      "women's clothing": "Kadın Giyim"
+    },
+    "filters": {
+      "title": "Filtreler",
+      "price": "Fiyat Aralığı",
+      "rating": "Minimum Puan",
+      "category": "Kategori",
+      "apply": "Filtreleri Uygula",
+      "clear": "Filtreleri Temizle",
+      "sortBy": "Sırala",
+      "sortOptions": {
+        "default": "Varsayılan",
+        "priceAsc": "Fiyat: Düşükten Yükseğe",
+        "priceDesc": "Fiyat: Yüksekten Düşüğe",
+        "ratingDesc": "Puan: Yüksekten Düşüğe",
+        "nameAsc": "İsim: A'dan Z'ye"
+      }
+    },
+    "product": {
+      "addToCart": "Sepete Ekle",
+      "viewDetails": "Detayları Gör",
+      "outOfStock": "Stokta Yok",
+      "inStock": "Stokta Var",
+      "price": "Fiyat",
+      "rating": "Puan",
+      "reviews": "değerlendirme"
+    }
   },
   "product": {
     "description": "Açıklama",
@@ -54,15 +105,24 @@
     "remove": "Kaldır",
     "checkout": "Ödemeye Git",
     "itemsInCart": "Sepette {count} ürün",
-    "clearAll": "Sepeti Temizle "
+    "clearAll": "Sepeti Temizle",
+    "totalItems": "Toplam Ürünler",
+    "totalAmount": "Toplam Tutar"
   },
   "footer": {
+    "description": "Modern e-ticaret platformu en iyi ürünleri rekabetçi fiyatlarla sunar. Güvenle alışveriş yapın ve hızlı, güvenli teslimatın tadını çıkarın.",
     "aboutUs": "Hakkımızda",
     "contactUs": "İletişim",
     "privacyPolicy": "Gizlilik Politikası",
     "termsOfService": "Kullanım Şartları",
     "followUs": "Bizi Takip Edin",
     "newsletter": "Bültenimize abone olun",
-    "allRightsReserved": "Tüm hakları saklıdır"
+    "allRightsReserved": "Tüm hakları saklıdır",
+    "quickLinks": "Hızlı Linkler",
+    "support": "Destek",
+    "home": "Ana Sayfa",
+    "products": "Ürünler",
+    "cart": "Sepet",
+    "subscribe": "Abone Ol"
   }
 }

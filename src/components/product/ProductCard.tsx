@@ -17,9 +17,10 @@ import { useAppDispatch, useAppSelector } from '@/hook/redux';
 interface ProductCardProps {
   product?: Product;
   isLoading?: boolean;
+  showRating?: boolean;
 }
 
-export default function ProductCard({ product, isLoading = false }: ProductCardProps) {
+export default function ProductCard({ product, isLoading = false, showRating = false }: ProductCardProps) {
   const t = useTranslations();
   const locale = useLocale();
   const dispatch = useAppDispatch();
@@ -49,8 +50,8 @@ export default function ProductCard({ product, isLoading = false }: ProductCardP
       dispatch(addToCart(product));
       setIsCartLoading(false);
       setShowNotification(true);
-      setTimeout(() => setShowNotification(false), 2000);
-    }, 300);
+      setTimeout(() => setShowNotification(false), 3000);
+    }, 500);
   };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
@@ -68,126 +69,149 @@ export default function ProductCard({ product, isLoading = false }: ProductCardP
     return Array.from({ length: 5 }, (_, index) => (
       <BiStar
         key={index}
-        className={`h-4 w-4 ${
+        className={`h-3.5 w-3.5 transition-colors ${
           index < Math.floor(rating)
-            ? 'text-yellow-400 fill-current'
-            : 'text-gray-300 dark:text-gray-600'
+            ? 'text-amber-400 fill-current'
+            : 'text-color4/30'
         }`}
       />
     ));
   };
 
   return (
-    <div className="group relative h-[520px]"> {/* Sabit kart yüksekliği */}
-      {/* Bildirim */}
+    <div className=" ">
+      {/* Success Notification */}
       {showNotification && (
-        <div className="absolute top-4 left-4 z-10 bg-color3 text-white px-3 py-1 rounded-full text-sm font-medium animate-fade-in">
-          {t('product.addedToCart')}
+        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-20 bg-gradient-to-r from-color1 to-color2 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-bounce backdrop-blur-sm">
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-white/20 rounded-full flex items-center justify-center">
+              <CgShoppingCart className="w-2.5 h-2.5" />
+            </div>
+            <span>{t('product.addedToCart')}</span>
+          </div>
         </div>
       )}
 
-      <Link href={`/${locale}/products/${product.id}/${product.title}`}>
-        <div
-          className="card h-full flex flex-col overflow-hidden rounded-xl 
-                     bg-color7 text-color8 
-                     dark:bg-color8 dark:text-color7 
-                     shadow transition-all duration-300 group-hover:shadow-lg"
-        >
-          {/* Product Image */}
-          <div className="relative h-64 bg-color2 dark:bg-color22 overflow-hidden">
+      <Link href={`/${locale}/products/${product.id}/${product.title}`} className="block h-full">
+        <div className="relative h-full bg-gradient-to-br from-white via-color5/5 to-color4/10 dark:from-color5 dark:via-color4/10 dark:to-color3/5 rounded-2xl border border-color4/10 dark:border-color3/20 shadow-sm hover:shadow-2xl hover:shadow-color1/10 dark:hover:shadow-color2/10 transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-1 overflow-hidden backdrop-blur-sm">
+          
+          {/* Glassmorphism overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-color1/5 dark:from-color5/40 dark:to-color2/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+
+          {/* Product Image Container */}
+          <div className="relative h-56 overflow-hidden rounded-t-2xl bg-gradient-to-br from-color5/20 via-white to-color4/20 dark:from-color4/20 dark:via-color5 dark:to-color3/20">
             <Image
               src={product.image}
               alt={product.title}
               fill
-              className="object-contain group-hover:scale-105 transition-transform duration-300 p-4"
+              className="object-contain group-hover:scale-110 transition-all duration-700 p-6 filter group-hover:saturate-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
-            {/* Category Badge */}
-            <div className="absolute top-3 left-3">
-              <span className="px-2 py-1 rounded-md text-xs font-medium bg-color1 text-white capitalize">
+            {/* Floating Category Badge */}
+            <div className="absolute top-4 left-4 z-10">
+              <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-color1 to-color2 text-white shadow-lg backdrop-blur-sm border border-white/20 capitalize tracking-wide">
                 {product.category}
               </span>
             </div>
 
-            {/* Wishlist Button */}
-            <div className="absolute top-3 right-3">
+            {/* Floating Wishlist Button */}
+            <div className="absolute top-4 right-4 z-10">
               <button
                 onClick={handleToggleWishlist}
-                className="p-2 bg-white dark:bg-color66 rounded-full shadow-md hover:shadow-lg transition-shadow"
+                className="p-2.5 bg-white/90 dark:bg-color5/90 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border border-color4/20 backdrop-blur-sm group/btn"
               >
                 {isInWishlist ? (
-                  <AiFillHeart className="h-5 w-5 text-red-500" />
+                  <AiFillHeart className="h-5 w-5 text-red-500 group-hover/btn:scale-110 transition-transform" />
                 ) : (
-                  <CiHeart className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                  <CiHeart className="h-5 w-5 text-color2 dark:text-color4 group-hover/btn:text-red-500 group-hover/btn:scale-110 transition-all" />
                 )}
               </button>
             </div>
 
-            {/* Quick Add to Cart Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+            {/* Gradient Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            {/* Floating Quick Add Button */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <button
                 onClick={handleAddToCart}
                 disabled={isCartLoading}
-                className="opacity-0 group-hover:opacity-100 bg-color1 text-white px-4 py-2 rounded-md font-medium flex items-center transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 disabled:opacity-50"
+                className="bg-gradient-to-r from-color1 to-color2 text-white px-6 py-3 rounded-full font-semibold flex items-center space-x-2 shadow-xl hover:shadow-2xl hover:scale-105 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 disabled:opacity-50 backdrop-blur-sm border border-white/20"
               >
                 {isCartLoading ? (
-                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : (
-                  <CgShoppingCart className="h-4 w-4 mr-2" />
+                  <CgShoppingCart className="h-5 w-5" />
                 )}
-                {cartItem ? `${t('common.addMore')} (${cartItem.quantity})` : t('common.addToCart')}
+                <span className="text-sm">
+                  {cartItem ? `${t('common.addMore')} (${cartItem.quantity})` : t('common.addToCart')}
+                </span>
               </button>
             </div>
           </div>
 
           {/* Product Details */}
-          <div className="p-4 flex flex-col flex-grow">
-            {/* Rating */}
-            <div className="flex items-center space-x-2 mb-2">
-              <div className="flex items-center">
-                {renderStars(product.rating.rate)}
+          <div className="relative p-5 flex flex-col flex-grow z-10">
+            
+            {/* Rating Section */}
+            {showRating && (
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-0.5">
+                    {renderStars(product.rating.rate)}
+                  </div>
+                  <span className="text-xs text-color1/70 dark:text-color4/70 font-medium">
+                    {product.rating.rate}/5
+                  </span>
+                </div>
+                <span className="text-xs text-color1/60 dark:text-color4/60 bg-color4/10 dark:bg-color3/10 px-2 py-1 rounded-full">
+                  {product.rating.count} reviews
+                </span>
               </div>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                ({product.rating.count})
-              </span>
-            </div>
+            )}
 
             {/* Title */}
-            <h3 className="font-semibold mb-2 line-clamp-2 group-hover:text-color1 transition-colors">
+            <h3 className="font-bold text-lg mb-3 line-clamp-2 text-color1 dark:text-color5 group-hover:text-color1 dark:group-hover:text-color2 transition-colors duration-300 leading-tight">
               {truncateText(product.title, 60)}
             </h3>
 
             {/* Description */}
-            <p className="text-sm mb-4 line-clamp-2 text-gray-600 dark:text-gray-400">
+            <p className="text-sm mb-4 line-clamp-2 text-color1/80 dark:text-color4/80 leading-relaxed">
               {truncateText(product.description, 100)}
             </p>
 
-            {/* Price and Action */}
-            <div className="flex items-center justify-between mt-auto">
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-color1">
+            {/* Price and Action Section */}
+            <div className="flex items-center justify-between mt-auto pt-3 border-t border-color4/10 dark:border-color3/10">
+              <div className="flex flex-col space-y-1">
+                <span className="text-2xl font-bold bg-gradient-to-r from-color1 to-color1/60  dark:from-color3 dark:to-color2/80 bg-clip-text text-transparent">
                   ${product.price.toFixed(2)}
                 </span>
                 {cartItem && (
-                  <span className="text-sm text-green-600 font-medium">
+                  <span className="text-xs font-medium text-color1 dark:text-color2  dark:bg-emerald-900/20 px-2 py-0.5 rounded-full">
                     {t('common.inCart')}: {cartItem.quantity}
                   </span>
                 )}
               </div>
               
+              {/* Mini Add Button */}
               <button
                 onClick={handleAddToCart}
                 disabled={isCartLoading}
-                className="p-2 rounded-md border border-color1 text-color1 dark:border-color2 dark:text-color2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-3 rounded-xl border-2 border-color1/20 dark:border-color2/20 text-color1 dark:text-color2 hover:bg-gradient-to-r hover:from-color1 hover:to-color2 hover:text-white hover:border-transparent hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-lg group/add"
               >
                 {isCartLoading ? (
-                  <div className="h-4 w-4 border-2 border-color1 border-t-transparent rounded-full animate-spin" />
+                  <div className="h-5 w-5 border-2 border-color1 dark:border-color2 border-t-transparent rounded-full animate-spin" />
                 ) : (
-                  <CiShoppingCart className="h-4 w-4" />
+                  <CiShoppingCart className="h-5 w-5 group-hover/add:scale-110 transition-transform" />
                 )}
               </button>
             </div>
+          </div>
+
+          {/* Subtle shine effect */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           </div>
         </div>
       </Link>

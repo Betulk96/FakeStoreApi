@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class", 
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,11 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        color1: "#7a314f",
-        color2: "#b0c7d5",
-        color3: "#395e77",
-        color4: "#eae6dd",
-        color5: "#3c2d37",
+        color1: "#386641",
+        color2: "#A2AF9B",
+        color3: "#EEEEEE",
+        color4: "#FAF9EE",
+        color5: "#DCCFC0",
         color6: "#D6E9D5",
         color7: "#FEFEFD",
         color8: "#111111",
@@ -29,7 +29,8 @@ module.exports = {
         color99: "#62748E",
       },
       backgroundImage: {
-        "gradient-primary": "linear-gradient(0deg, #b0c7d5 0%, #395e77 100%)",
+        "gradient-primary": "linear-gradient(0deg, #FAF9EE 0%, #A2AF9B 100%)",
+        "gradient-secondary": "linear-gradient(0deg, #c7cec3 0%, #A2AF9B 100%)",
         "gradient-dark": "linear-gradient(0deg, #45556C 0%, #0F172B 100%)",
       },
       keyframes: {

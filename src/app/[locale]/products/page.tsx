@@ -43,13 +43,10 @@ export default async function ProductsPage({ params: { locale }, searchParams }:
     ]);
 
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen  ">
         <div className="container-custom py-8">
           {/* Page Header */}
-          <div className="mb-8">
-                    <h1 className="text-3xl lg:text-4xl font-bold text-gray-900
-                    text-gradient">{t('title')}</h1>
-          </div>
+         
 
           <Suspense fallback={<ProductsLoading />}>
             <ProductsClient

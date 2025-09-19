@@ -15,7 +15,10 @@
     "addMore": "Add More",
     "inCart": "In Cart",
     "continueShopping": "Continue Shopping",
-    "clearAll": "Clear All"
+    "clearAll": "Clear All",
+    "items": "Items",
+    "checkout": "Checkout",
+    "total": "Total"
   },
   "home": {
     "title": "Welcome to Our Store",
@@ -53,15 +56,90 @@
     "subtotal": "Subtotal",
     "remove": "Remove",
     "checkout": "Proceed to Checkout",
-    "itemsInCart": "{count} items in cart"
+    "itemsInCart": "{count} items in cart",
+    "clearAll": "Clear Cart",
+    "totalItems": "Total Items",
+    "totalAmount": "Total Amount"
   },
   "footer": {
+    "description": "Modern e-commerce platform offering the best products at competitive prices. Shop with confidence and enjoy fast, secure delivery.",
     "aboutUs": "About Us",
     "contactUs": "Contact Us",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "followUs": "Follow Us",
     "newsletter": "Subscribe to our newsletter",
-    "allRightsReserved": "All rights reserved"
+    "allRightsReserved": "All rights reserved",
+    "quickLinks": "Quick Links",
+    "support": "Support",
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "subscribe": "Subscribe"
+  },
+  "products": {
+    "title": "Popular Products",
+    "loading": "Loading products...",
+    "noProducts": "No products found.",
+    "methods": {
+      "rating": "Highest Rated",
+      "reviews": "Most Reviewed",
+      "trending": "Trending",
+      "featured": "Featured"
+    },
+    "descriptions": {
+      "rating": "Products with the highest ratings",
+      "reviews": "Products with the most reviews",
+      "trending": "Trending products based on rating and review count",
+      "featured": "Featured products"
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch popular products:"
+    },
+    "statistics": {
+      "title": "Statistics",
+      "averageRating": "Average Rating",
+      "totalReviews": "Total Reviews",
+      "averagePrice": "Average Price",
+      "categoryCount": "Categories"
+    },
+    "buttons": {
+      "showAll": "Show All Products",
+      "showPopular": "Show Popular Products",
+      "loadMore": "Load More",
+      "refresh": "Refresh"
+    },
+    "categories": {
+      "all": "All Categories",
+      "electronics": "Electronics",
+      "jewelery": "Jewelry",
+      "men's clothing": "Men's Clothing",
+      "women's clothing": "Women's Clothing"
+    },
+    "filters": {
+      "title": "Filters",
+      "price": "Price Range",
+      "rating": "Minimum Rating",
+      "category": "Category",
+      "apply": "Apply Filters",
+      "clear": "Clear Filters",
+      "sortBy": "Sort By",
+      "sortOptions": {
+        "default": "Default",
+        "priceAsc": "Price: Low to High",
+        "priceDesc": "Price: High to Low",
+        "ratingDesc": "Rating: High to Low",
+        "nameAsc": "Name: A to Z"
+      }
+    },
+    "product": {
+      "addToCart": "Add to Cart",
+      "viewDetails": "View Details",
+      "outOfStock": "Out of Stock",
+      "inStock": "In Stock",
+      "price": "Price",
+      "rating": "Rating",
+      "reviews": "reviews"
+    }
   }
 }

@@ -26,9 +26,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <NextIntlClientProvider messages={messages} locale={locale}>
       <ThemeProvider attribute="class">
       <ReduxProvider>
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-gradient-primary dark:bg-gradient-dark">
           <Header />
-          <main className="h-screen bg-gradient-primary dark:gradient-dark">{children}</main>
+          <main >{children}</main>
           <Footer />
         </div>
         </ReduxProvider>
