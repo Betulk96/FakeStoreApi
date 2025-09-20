@@ -27,21 +27,6 @@
     "shopNow": "Shop Now",
     "viewAll": "View All Products"
   },
-  "products": {
-    "title": "All Products",
-    "filters": "Filters",
-    "sortBy": "Sort By",
-    "priceRange": "Price Range",
-    "allCategories": "All Categories",
-    "sortOptions": {
-      "default": "Default",
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "rating": "Highest Rated"
-    },
-    "noProducts": "No products found",
-    "showingResults": "Showing {count} products"
-  },
   "product": {
     "description": "Description",
     "addedToCart": "Added to cart!",
@@ -59,7 +44,8 @@
     "itemsInCart": "{count} items in cart",
     "clearAll": "Clear Cart",
     "totalItems": "Total Items",
-    "totalAmount": "Total Amount"
+    "totalAmount": "Total Amount",
+    "emptyMessage": "Your cart is empty. Start shopping to add items."
   },
   "footer": {
     "description": "Modern e-commerce platform offering the best products at competitive prices. Shop with confidence and enjoy fast, secure delivery.",
@@ -141,5 +127,27 @@
       "rating": "Rating",
       "reviews": "reviews"
     }
+  },
+
+  "filters": {
+    "category": "Category",
+    "all": "All Categories",
+    "sortBy": "Sort By",
+    "default": "Default",
+    "showing": "Showing {count} {count, plural, one {product} other {products}}{category, select, none {} other { in {category}}}",
+    "sortOptions": {
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low",
+      "ratingDesc": "Rating: High to Low"
+    },
+    "price": "Price Range",
+    "clearFilters": "Clear Filters",
+    "noResults": "No products found"
+  },
+  "categories": {
+    "electronics": "Electronics",
+    "jewelery": "Jewelry",
+    "men's clothing": "Men's clothing",
+    "women's clothing": "Women's clothing"
   }
 }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslations } from 'next-intl';
 import ProductCard from "@/components/product/ProductCard";
-import { Product } from "@/types";
+import { Product } from "@/types/product";
 import { ApiService } from "@/services/FakeStoreApi";
 
 const SKELETON_COUNT = 4;
@@ -13,7 +13,7 @@ type PopularityMethod = 'rating' | 'reviews' | 'trending' | 'featured';
 const PopularProductsPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentMethod, setCurrentMethod] = useState<PopularityMethod>('trending');
+  const [currentMethod, setCurrentMethod] = useState<PopularityMethod>('rating');
   
   const t = useTranslations();
 
@@ -32,20 +32,6 @@ const PopularProductsPage = () => {
     }
   };
 
-  const getMethodDescription = (method: PopularityMethod): string => {
-    switch (method) {
-      case 'rating':
-        return t('products.descriptions.rating');
-      case 'reviews':
-        return t('products.descriptions.reviews');
-      case 'trending':
-        return t('products.descriptions.trending');
-      case 'featured':
-        return t('products.descriptions.featured');
-      default:
-        return '';
-    }
-  };
 
   useEffect(() => {
     const fetchPopularProducts = async () => {

@@ -4,17 +4,26 @@ import { getMessages } from "next-intl/server";
 import { ReduxProvider } from "@/provider/ReduxProvider";
 import { ThemeProvider } from "next-themes";
 import { locales } from "@/i18n";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 
-import type { LayoutProps } from "@/types";
-import Header from "../../components/common/Header";
-import Footer from "../../components/common/Footer";
+// ✅ Next.js 15 için doğru layout tip tanımı
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{
+    locale: string;
+  }>;
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({ children, params }: LayoutProps) {
-  const { locale } = await params;  // ✅ destructure async
+export default async function LocaleLayout({ 
+  children, 
+  params 
+}: LocaleLayoutProps) {
+  const { locale } = await params;
 
   if (!locales.includes(locale as any)) {
     notFound();
@@ -25,15 +34,14 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <ThemeProvider attribute="class">
-      <ReduxProvider>
-        <div className="min-h-screen flex flex-col bg-gradient-primary dark:bg-gradient-dark">
-          <Header />
-          <main >{children}</main>
-          <Footer />
-        </div>
+        <ReduxProvider>
+          <div className="min-h-screen flex flex-col bg-gradient-primary dark:bg-gradient-dark">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </ReduxProvider>
       </ThemeProvider>
     </NextIntlClientProvider>
   );
 }
-

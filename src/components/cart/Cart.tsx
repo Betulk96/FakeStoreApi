@@ -9,7 +9,7 @@ import {
   updateQuantity,
   clearCart
 } from '@/store/slices/cartSlice';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineDelete } from 'react-icons/ai';
@@ -17,7 +17,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineDelete } from 'react-icons/ai';
 export default function Cart() {
   const t = useTranslations();
   const dispatch = useAppDispatch();
-
+  const locale = useLocale();
   const cartItems = useAppSelector(selectCartItems);
   const totalItems = useAppSelector(selectCartTotalItems);
   const totalAmount = useAppSelector(selectCartTotalAmount);
@@ -36,15 +36,17 @@ export default function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="text-center py-16">
-        <h2 className="text-2xl font-semibold mb-4">{t('cart.empty')}</h2>
-        <p className="text-gray-500">{t('cart.emptyMessage')}</p>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center py-16">
+          <h2 className="text-2xl font-semibold mb-4">{t('cart.empty')}</h2>
+          <p className="text-gray-500">{t('cart.emptyMessage')}</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
+    <div className="max-w-5xl mx-auto p-6 min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">
@@ -67,21 +69,25 @@ export default function Cart() {
             className="flex items-center gap-4 p-4 bg-white/50 backdrop-blur-md dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700"
           >
             {/* Product Image */}
-            <div className="relative w-20 h-20 flex-shrink-0">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-contain rounded-md"
-              />
-            </div>
+            <Link href={`/${locale}/products/${item.id}/${item.title}`}>
+              <div className="relative w-20 h-20 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-contain rounded-md"
+                />
+              </div>
+            </Link>
 
             {/* Product Info */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate">
-                {item.title}
-              </h3>
-              <p className="text-gray-500 text-sm">{item.category}</p>
+              <Link href={`/${locale}/products/${item.id}/${item.title}`}>
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate cursor-pointer hover:text-primary-600 transition-colors  hover:color1">
+                  {item.title}
+                </h3>
+              </Link>
+              <p className="text-gray-500 text-sm">{t(`categories.${item.category.toLowerCase()}`)}</p>
               <p className="text-lg font-bold text-primary-600">
                 ${item.price.toFixed(2)}
               </p>
@@ -147,13 +153,12 @@ export default function Cart() {
           </div>
         </div>
 
-
-        <div className="space-y-3">
-
-          <Link href={`/`}>
-            <button className="w-full py-3 rounded-lg border border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold transition-colors">
+        <div className="space-y-3 flex items-center justify-end">
+          <Link href={`/${locale}/products`}>
+            <button className="p-3 bg-gradient-to-r from-color1 to-color2 rounded-lg border border-color1 text-color3 hover:bg-color1/50 hover:text-white font-semibold transition-colors">
               {t('common.continueShopping')}
-            </button></Link>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

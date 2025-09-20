@@ -11,15 +11,15 @@ export default function Footer() {
   const locale = useLocale();
 
   return (
-    <footer className="bg-gradient-to-br from-color1 via-color2 to-color1 dark:bg-gradient-to-br dark:from-color33 dark:via-color22 dark:to-color33 text-white relative overflow-hidden">   
+    <footer className="bg-gradient-to-br from-color1 via-color2 to-color1 dark:bg-gradient-to-br dark:from-color33 dark:via-color22 dark:to-color33 text-white relative overflow-hidden">
       <div className="z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
+
             {/* Brand Section */}
             <div className="col-span-1 lg:col-span-2">
-              <Link 
-                href="https://fakestoreapi.com/docs" 
+              <Link
+                href="https://fakestoreapi.com/docs"
                 className="flex items-center space-x-2 text-2xl font-bold mb-6 group"
               >
                 <div className="bg-gradient-to-r from-color1 to-color2 p-2 rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-lg">
@@ -27,11 +27,11 @@ export default function Footer() {
                 </div>
                 <span className="text-color3 drop-shadow-sm">Fake Store</span>
               </Link>
-              
+
               <p className="text-color3/90 mb-6 max-w-md leading-relaxed">
                 {t('description')}
               </p>
-              
+
               {/* Newsletter */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
@@ -39,7 +39,7 @@ export default function Footer() {
                   placeholder={t('newsletter')}
                   className="flex-1 px-4 py-3 rounded-xl backdrop-blur-sm border border-color3/30 bg-color3/10 text-color3 focus:outline-none focus:ring-2 focus:bg-opacity-30 transition-all duration-300 placeholder:text-color3/60"
                 />
-                <button 
+                <button
                   className="px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg flex items-center justify-center whitespace-nowrap bg-gradient-to-r from-color1 to-color2 text-color3 hover:opacity-90"
                 >
                   <BsMailbox className="h-4 w-4 mr-2" />
@@ -56,8 +56,8 @@ export default function Footer() {
               </h3>
               <ul className="space-y-4">
                 <li>
-                  <Link 
-                    href={`/${locale}`} 
+                  <Link
+                    href={`/${locale}`}
                     className="flex items-center text-color3/80 hover:text-color3 transition-colors duration-300 transform hover:translate-x-2"
                   >
                     <div className="w-2 h-2 rounded-full mr-3 bg-gradient-to-r from-color1 to-color2 opacity-0 transition-opacity hover:opacity-100"></div>
@@ -65,8 +65,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href={`/${locale}/products`} 
+                  <Link
+                    href={`/${locale}/products`}
                     className="flex items-center text-color3/80 hover:text-color3 transition-colors duration-300 transform hover:translate-x-2"
                   >
                     <div className="w-2 h-2 rounded-full mr-3 bg-gradient-to-r from-color1 to-color2 opacity-0 transition-opacity hover:opacity-100"></div>
@@ -74,8 +74,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href={`/${locale}/cart`} 
+                  <Link
+                    href={`/${locale}/cart`}
                     className="flex items-center text-color3/80 hover:text-color3 transition-colors duration-300 transform hover:translate-x-2"
                   >
                     <div className="w-2 h-2 rounded-full mr-3 bg-gradient-to-r from-color1 to-color2 opacity-0 transition-opacity hover:opacity-100"></div>
@@ -124,10 +124,17 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-color3/20 py-6 backdrop-blur-sm">
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <Link href="https://www.betulkuyucu.com/" className="text-sm text-color3/70 mb-4 sm:mb-0">
+
+            <Link
+              href="https://www.betulkuyucu.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-color3/70 mb-4 sm:mb-0"
+            >
               © 2025 Betül Kuyucu / E-Commerce Store. {t('allRightsReserved')}
             </Link>
-            
+
+
             {/* Social Links */}
             <div className="flex items-center space-x-4">
               <span className="text-sm text-color3/70">{t('followUs')}:</span>

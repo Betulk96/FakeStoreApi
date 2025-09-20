@@ -6,33 +6,30 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 import { addToCart, selectCartItemById } from '@/store/slices/cartSlice';
 import { toggleWishlist, selectIsInWishlist } from '@/store/slices/wishlistSlice';
-import { Product } from '@/types';
+import { Product } from '@/types/product';
 import ProductCardSkeleton from '@/components/product/ProductCardSkeleton';
 import { BiStar } from 'react-icons/bi';
 import { CgShoppingCart } from 'react-icons/cg';
 import { CiShoppingCart, CiHeart } from 'react-icons/ci';
 import { AiFillHeart } from 'react-icons/ai';
 import { useAppDispatch, useAppSelector } from '@/hook/redux';
+import slugify from 'slugify';
+import { ProductCardProps } from '@/types/cart';
 
-interface ProductCardProps {
-  product?: Product;
-  isLoading?: boolean;
-  showRating?: boolean;
-}
 
 export default function ProductCard({ product, isLoading = false, showRating = false }: ProductCardProps) {
   const t = useTranslations();
   const locale = useLocale();
   const dispatch = useAppDispatch();
-  
+
   const [isCartLoading, setIsCartLoading] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
 
   // Redux selectors
-  const cartItem = useAppSelector((state) => 
+  const cartItem = useAppSelector((state) =>
     product ? selectCartItemById(state, product.id) : undefined
   );
-  const isInWishlist = useAppSelector((state) => 
+  const isInWishlist = useAppSelector((state) =>
     product ? selectIsInWishlist(state, product.id) : false
   );
 
@@ -43,9 +40,9 @@ export default function ProductCard({ product, isLoading = false, showRating = f
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     setIsCartLoading(true);
-    
+
     setTimeout(() => {
       dispatch(addToCart(product));
       setIsCartLoading(false);
@@ -69,20 +66,22 @@ export default function ProductCard({ product, isLoading = false, showRating = f
     return Array.from({ length: 5 }, (_, index) => (
       <BiStar
         key={index}
-        className={`h-3.5 w-3.5 transition-colors ${
-          index < Math.floor(rating)
+        className={`h-3.5 w-3.5 transition-colors ${index < Math.floor(rating)
             ? 'text-amber-400 fill-current'
             : 'text-color4/30'
-        }`}
+          }`}
       />
     ));
   };
 
+  // SEO-friendly slug
+  const slug = slugify(product.title, { lower: true, strict: true });
+
   return (
-    <div className=" ">
+    <div className="card relative">
       {/* Success Notification */}
       {showNotification && (
-        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-20 bg-gradient-to-r from-color1 to-color2 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-bounce backdrop-blur-sm">
+        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-color1 to-color2 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg animate-bounce backdrop-blur-sm ">
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-white/20 rounded-full flex items-center justify-center">
               <CgShoppingCart className="w-2.5 h-2.5" />
@@ -92,9 +91,9 @@ export default function ProductCard({ product, isLoading = false, showRating = f
         </div>
       )}
 
-      <Link href={`/${locale}/products/${product.id}/${product.title}`} className="block h-full">
+      <Link href={`/${locale}/products/${product.id}/${slug}`} className="block h-full">
         <div className="relative h-full bg-gradient-to-br from-white via-color5/5 to-color4/10 dark:from-color5 dark:via-color4/10 dark:to-color3/5 rounded-2xl border border-color4/10 dark:border-color3/20 shadow-sm hover:shadow-2xl hover:shadow-color1/10 dark:hover:shadow-color2/10 transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-1 overflow-hidden backdrop-blur-sm">
-          
+
           {/* Glassmorphism overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-color1/5 dark:from-color5/40 dark:to-color2/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
 
@@ -111,7 +110,7 @@ export default function ProductCard({ product, isLoading = false, showRating = f
             {/* Floating Category Badge */}
             <div className="absolute top-4 left-4 z-10">
               <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-color1 to-color2 text-white shadow-lg backdrop-blur-sm border border-white/20 capitalize tracking-wide">
-                {product.category}
+                {t(`categories.${product.category.toLowerCase()}`)}
               </span>
             </div>
 
@@ -132,28 +131,12 @@ export default function ProductCard({ product, isLoading = false, showRating = f
             {/* Gradient Overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-            {/* Floating Quick Add Button */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <button
-                onClick={handleAddToCart}
-                disabled={isCartLoading}
-                className="bg-gradient-to-r from-color1 to-color2 text-white px-6 py-3 rounded-full font-semibold flex items-center space-x-2 shadow-xl hover:shadow-2xl hover:scale-105 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 disabled:opacity-50 backdrop-blur-sm border border-white/20"
-              >
-                {isCartLoading ? (
-                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <CgShoppingCart className="h-5 w-5" />
-                )}
-                <span className="text-sm">
-                  {cartItem ? `${t('common.addMore')} (${cartItem.quantity})` : t('common.addToCart')}
-                </span>
-              </button>
-            </div>
+
           </div>
 
           {/* Product Details */}
           <div className="relative p-5 flex flex-col flex-grow z-10">
-            
+
             {/* Rating Section */}
             {showRating && (
               <div className="flex items-center justify-between mb-3">
@@ -193,7 +176,7 @@ export default function ProductCard({ product, isLoading = false, showRating = f
                   </span>
                 )}
               </div>
-              
+
               {/* Mini Add Button */}
               <button
                 onClick={handleAddToCart}

@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '../types/product';
 
 const BASE_URL = process.env.FAKE_STORE_API_URL || 'https://fakestoreapi.com';
 

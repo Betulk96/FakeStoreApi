@@ -107,7 +107,8 @@
     "itemsInCart": "Sepette {count} ürün",
     "clearAll": "Sepeti Temizle",
     "totalItems": "Toplam Ürünler",
-    "totalAmount": "Toplam Tutar"
+    "totalAmount": "Toplam Tutar",
+    " emptyMessage": "Sepetiniz bos. Alışverişe basla."
   },
   "footer": {
     "description": "Modern e-ticaret platformu en iyi ürünleri rekabetçi fiyatlarla sunar. Güvenle alışveriş yapın ve hızlı, güvenli teslimatın tadını çıkarın.",
@@ -124,5 +125,26 @@
     "products": "Ürünler",
     "cart": "Sepet",
     "subscribe": "Abone Ol"
+  },
+  "filters": {
+    "category": "Kategori",
+    "all": "Tüm Kategoriler",
+    "sortBy": "Sırala",
+    "default": "Varsayılan",
+    "showing": "{count} {count, plural, one {ürün} other {ürün}}{category, select, none {} other { kategorisinde}} gösteriliyor",
+    "sortOptions": {
+      "priceAsc": "Fiyat: Düşükten Yükseğe",
+      "priceDesc": "Fiyat: Yüksekten Düşüğe",
+      "ratingDesc": "Puan: Yüksekten Düşüğe"
+    },
+    "price": "Fiyat Aralığı",
+    "clearFilters": "Filtreleri Temizle",
+    "noResults": "Ürün bulunamadı"
+  },
+  "categories": {
+    "electronics": "Elektronik",
+    "jewelery": "Takı",
+    "men's clothing": "Erkek Giyim",
+    "women's clothing": "Kadın Giyim"
   }
 }

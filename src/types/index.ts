@@ -1,39 +1,5 @@
-// Product Types
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
-
-// Cart Types
-export interface CartItem {
-  id: number;
-  product: Product;
-  quantity: number;
-}
-
-export interface CartState {
-  items: CartItem[];
-  totalAmount: number;
-  totalItems: number;
-}
-
-// Filter Types
-export interface FilterState {
-  category: string;
-  priceRange: {
-    min: number;
-    max: number;
-  };
-  sortBy: 'price-asc' | 'price-desc' | 'rating' | 'default';
-}
+import { CartState } from "./cart";
+import { FilterState } from "./filter";
 
 // App State
 export interface RootState {
@@ -47,11 +13,6 @@ export interface ApiResponse<T> {
   error?: string;
 }
 
-// Component Props
-export interface ProductCardProps {
-  product: Product;
-  onAddToCart: (product: Product) => void;
-}
 
 export interface LayoutProps {
   children: React.ReactNode;
